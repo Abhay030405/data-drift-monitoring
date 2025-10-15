@@ -1,0 +1,109 @@
+# ==============================
+# 🧠 Python / FastAPI / LangChain
+# ==============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.log
+*.tmp
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter and IPython
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.ipynb~
+
+# Compiled or cache files
+.cache/
+.pytest_cache/
+mypy_cache/
+__pypackages__/
+
+# ==============================
+# 📦 Dependency and Build Files
+# ==============================
+dist/
+build/
+*.spec
+
+# ==============================
+# 🔐 Credentials and Configs
+# ==============================
+*.env
+.env.*
+.envrc
+config/secrets.yaml
+config/*.key
+config/*.json
+!config/example_config.yaml  # Keep only templates
+
+# ==============================
+# 📊 Data Files (for large CSVs/parquet)
+# ==============================
+data/raw/*
+data/interim/*
+data/processed/*
+data/temp/*
+!data/example_dataset.csv  # Keep only small samples
+
+# ==============================
+# 🤖 ML Models / Checkpoints
+# ==============================
+models/
+*.h5
+*.pkl
+*.joblib
+*.pt
+*.onnx
+
+# ==============================
+# 🧮 Drift Reports and Artifacts
+# ==============================
+reports/json_reports/*
+reports/html_reports/*
+!reports/example_report.json  # Keep only demo
+logs/
+outputs/
+artifacts/
+
+# ==============================
+# 🌐 Streamlit Frontend
+# ==============================
+.streamlit/secrets.toml
+frontend/__pycache__/
+frontend/node_modules/
+frontend/.streamlit/
+frontend/build/
+frontend/dist/
+frontend/.DS_Store
+
+# ==============================
+# 🧰 IDE / Editor Files
+# ==============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==============================
+# 💻 System Files
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# 🧪 Testing / Temporary
+# ==============================
+tests/__pycache__/
+temp/
+tmp/
