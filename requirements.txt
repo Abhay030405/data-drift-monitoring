@@ -1,32 +1,54 @@
-# FastAPI & Web
-fastapi==0.102.0
-uvicorn[standard]==0.23.0
-python-multipart==0.0.6   # For file uploads
+# Neural Watch - Phase 1 Requirements
+# Data Ingestion & Quality Setup
 
-# Data processing
-pandas==2.1.0
-numpy==1.26.0
-scipy==1.11.0
-pyarrow==12.0.1           # For Parquet support
-openpyxl==3.1.3           # Optional, for Excel support
+# Backend Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+pydantic==2.5.3
 
-# Statistical & ML Drift Detection
-scikit-learn==1.3.0
-statsmodels==0.15.2
+# uvicorn dependency
+click==8.1.7
 
-# Visualization
-matplotlib==3.8.1
-seaborn==0.12.3
-plotly==6.1.1
+# Data Processing
+pandas==2.1.4
+numpy==1.26.3
+pyarrow==14.0.2
 
-# LLM + LangChain + LangGraph
-langchain==0.1.0   # Update to latest stable
-pydantic==2.5.1
+# Environment & Configuration
+python-dotenv==1.0.0
+
+# Frontend
+streamlit==1.30.0
+
+# HTTP Requests
 requests==2.31.0
 
-# Optional: real-time streaming
-kafka-python==2.1.0  # Only if you implement Kafka later
+# Testing
+pytest==7.4.4
+pytest-cov==4.1.0
+pytest-asyncio==0.23.3
 
-# Utilities
-python-dotenv==1.0.0  # For environment variables
-loguru==0.7.0         # For logging
+# Logging & Utilities
+colorlog==6.8.0
+
+# Future Phases (commented out for now)
+# Phase 2-3: Statistical Tests
+# scipy==1.11.4
+# scikit-learn==1.4.0
+
+# Phase 4: LLM Integration
+# langchain==0.1.0
+# openai==1.10.0
+# anthropic==0.8.0
+
+# Phase 5: Alerts
+# slack-sdk==3.26.2
+
+# Streaming (Optional)
+# kafka-python==2.0.2
+
+# Visualization
+# matplotlib==3.8.2
+# seaborn==0.13.1
+# plotly==5.18.0

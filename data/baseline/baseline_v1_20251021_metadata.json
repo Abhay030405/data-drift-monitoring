@@ -1,0 +1,109 @@
+{
+  "version_id": "baseline_v1_20251021",
+  "version_number": 1,
+  "created_at": "2025-10-21T18:00:10.410470",
+  "original_filename": "original_data_20251021_180010.csv",
+  "baseline_filename": "baseline_v1_20251021.csv",
+  "baseline_path": "C:\\itsMe\\Projects\\Nueral-Watch\\data\\baseline\\baseline_v1_20251021.csv",
+  "description": "Baseline version 1",
+  "source_metadata": {
+    "filename": "original_data.csv",
+    "file_path": "C:\\itsMe\\Projects\\Nueral-Watch\\data\\raw\\temp_original_data.csv",
+    "timestamp": "2025-10-21T18:00:10.391583",
+    "file_size_bytes": 3494,
+    "file_size_mb": 0.0,
+    "file_hash": "f49b2f5665f19072",
+    "rows": 100,
+    "columns": 6,
+    "column_names": [
+      "id",
+      "name",
+      "age",
+      "salary",
+      "department",
+      "score"
+    ],
+    "dtypes": {
+      "id": "int64",
+      "name": "object",
+      "age": "int64",
+      "salary": "int64",
+      "department": "object",
+      "score": "float64"
+    },
+    "memory_usage_mb": 0.01,
+    "missing_values": {
+      "counts": {
+        "id": 0,
+        "name": 0,
+        "age": 0,
+        "salary": 0,
+        "department": 0,
+        "score": 0
+      },
+      "percentages": {
+        "id": 0.0,
+        "name": 0.0,
+        "age": 0.0,
+        "salary": 0.0,
+        "department": 0.0,
+        "score": 0.0
+      },
+      "total_missing": 0,
+      "columns_with_missing": []
+    },
+    "numeric_summary": {
+      "id": {
+        "mean": 50.5,
+        "std": 29.011491975882016,
+        "min": 1.0,
+        "max": 100.0
+      },
+      "age": {
+        "mean": 46.45,
+        "std": 14.243463856318893,
+        "min": 20.0,
+        "max": 69.0
+      },
+      "salary": {
+        "mean": 74135.86,
+        "std": 25400.215526414002,
+        "min": 30016.0,
+        "max": 118118.0
+      },
+      "score": {
+        "mean": 53.81789999999999,
+        "std": 29.96063259756817,
+        "min": 0.19,
+        "max": 98.81
+      }
+    },
+    "categorical_summary": {
+      "name": {
+        "unique_values": 100,
+        "top_values": {
+          "User_1": 1,
+          "User_64": 1,
+          "User_74": 1,
+          "User_73": 1,
+          "User_72": 1
+        }
+      },
+      "department": {
+        "unique_values": 4,
+        "top_values": {
+          "Engineering": 27,
+          "HR": 26,
+          "Sales": 24,
+          "Marketing": 23
+        }
+      }
+    },
+    "duplicates": {
+      "count": 0,
+      "percentage": 0.0
+    },
+    "description": null,
+    "is_baseline": true
+  }
+}
