@@ -1,0 +1,208 @@
+{
+  "report_id": "quality_report_20251023_123130",
+  "file_id": "current_data_20251021_180103",
+  "filename": "current_data_20251021_180103.csv",
+  "timestamp": "2025-10-23T12:31:30.497913",
+  "dataset_info": {
+    "rows": 120,
+    "columns": 6,
+    "column_names": [
+      "id",
+      "name",
+      "age",
+      "salary",
+      "department",
+      "score"
+    ],
+    "dtypes": {
+      "id": "int64",
+      "name": "object",
+      "age": "int64",
+      "salary": "int64",
+      "department": "object",
+      "score": "float64"
+    }
+  },
+  "missing_values": {
+    "total_missing": 12,
+    "total_cells": 720,
+    "overall_missing_percentage": 1.67,
+    "columns_affected": 1,
+    "columns_with_missing": [
+      "name"
+    ],
+    "details": [
+      {
+        "column": "name",
+        "missing_count": 12,
+        "missing_percentage": 10.0,
+        "severity": "medium",
+        "data_type": "object",
+        "recommendation": "impute_mode"
+      }
+    ],
+    "summary": {
+      "high_severity": 0,
+      "medium_severity": 1,
+      "low_severity": 0,
+      "worst_column": "name",
+      "worst_percentage": 10.0
+    }
+  },
+  "missing_patterns": {
+    "rows_with_missing": 12,
+    "rows_with_missing_percentage": 10.0,
+    "rows_with_multiple_missing": 0,
+    "completely_empty_rows": 0,
+    "max_missing_per_row": 1,
+    "avg_missing_per_row": 0.1
+  },
+  "duplicates": {
+    "total_rows": 120,
+    "total_duplicates": 0,
+    "duplicate_percentage": 0.0,
+    "duplicate_groups": 0,
+    "unique_rows": 120,
+    "check_full_row": true,
+    "key_columns": null,
+    "key_analysis": null,
+    "sample_duplicates": [],
+    "recommendation": "no_action",
+    "severity": "none"
+  },
+  "outliers": {
+    "total_outliers": 0,
+    "total_numeric_values": 480,
+    "outlier_percentage": 0.0,
+    "columns_analyzed": 4,
+    "columns_with_outliers": [],
+    "details": [
+      {
+        "column": "id",
+        "method": "iqr",
+        "outlier_count": 0,
+        "total_values": 120,
+        "outlier_percentage": 0.0,
+        "lower_bound": -58.5,
+        "upper_bound": 179.5,
+        "sample_outliers": [],
+        "statistics": {
+          "mean": 60.5,
+          "median": 60.5,
+          "std": 34.785054261852174,
+          "min": 1.0,
+          "max": 120.0,
+          "q1": 30.75,
+          "q3": 90.25
+        },
+        "recommendation": "no_action",
+        "severity": "none"
+      },
+      {
+        "column": "age",
+        "method": "iqr",
+        "outlier_count": 0,
+        "total_values": 120,
+        "outlier_percentage": 0.0,
+        "lower_bound": -10.125,
+        "upper_bound": 98.875,
+        "sample_outliers": [],
+        "statistics": {
+          "mean": 44.958333333333336,
+          "median": 46.5,
+          "std": 15.441075763310382,
+          "min": 20.0,
+          "max": 69.0,
+          "q1": 30.75,
+          "q3": 58.0
+        },
+        "recommendation": "no_action",
+        "severity": "none"
+      },
+      {
+        "column": "salary",
+        "method": "iqr",
+        "outlier_count": 0,
+        "total_values": 120,
+        "outlier_percentage": 0.0,
+        "lower_bound": -7981.625,
+        "upper_bound": 158695.375,
+        "sample_outliers": [],
+        "statistics": {
+          "mean": 75553.99166666667,
+          "median": 75827.5,
+          "std": 25482.990421028873,
+          "min": 31531.0,
+          "max": 119219.0,
+          "q1": 54522.25,
+          "q3": 96191.5
+        },
+        "recommendation": "no_action",
+        "severity": "none"
+      },
+      {
+        "column": "score",
+        "method": "iqr",
+        "outlier_count": 0,
+        "total_values": 120,
+        "outlier_percentage": 0.0,
+        "lower_bound": -43.045000000000016,
+        "upper_bound": 141.41500000000002,
+        "sample_outliers": [],
+        "statistics": {
+          "mean": 49.47475,
+          "median": 49.015,
+          "std": 28.27590665948603,
+          "min": 1.67,
+          "max": 99.35,
+          "q1": 26.127499999999998,
+          "q3": 72.2425
+        },
+        "recommendation": "no_action",
+        "severity": "none"
+      }
+    ],
+    "method": "iqr"
+  },
+  "quality_score": {
+    "overall_score": 99.5,
+    "grade": "Excellent",
+    "grade_emoji": "\ud83d\udfe2",
+    "breakdown": {
+      "missing_values": {
+        "score": 98.33,
+        "weight": 30.0,
+        "contribution": 29.5
+      },
+      "duplicates": {
+        "score": 100.0,
+        "weight": 25.0,
+        "contribution": 25.0
+      },
+      "outliers": {
+        "score": 100.0,
+        "weight": 25.0,
+        "contribution": 25.0
+      },
+      "schema_consistency": {
+        "score": 100.0,
+        "weight": 20.0,
+        "contribution": 20.0
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "medium",
+      "category": "missing_values",
+      "message": "Column 'name' has 10.0% missing values",
+      "action": "impute_mode"
+    }
+  ],
+  "summary": {
+    "total_issues": 1,
+    "high_priority_issues": 0,
+    "medium_priority_issues": 1,
+    "low_priority_issues": 0
+  }
+}

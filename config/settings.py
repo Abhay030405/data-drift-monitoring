@@ -77,7 +77,7 @@ API_SECRET_KEY = os.getenv("API_SECRET_KEY", "change-this-in-production")
 # Phase-specific feature flags
 FEATURES = {
     "phase_1_ingestion": True,
-    "phase_2_quality_checks": False,
+    "phase_2_quality_checks": True,
     "phase_3_drift_detection": False,
     "phase_4_llm_reasoning": False,
     "phase_5_model_monitoring": False,

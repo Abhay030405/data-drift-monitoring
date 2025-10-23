@@ -1,6 +1,6 @@
 """
 Neural Watch Streamlit Dashboard - Main Application
-Phase 1: Data Ingestion & Quality Setup
+Phase 2: Data Ingestion & Quality Checks
 """
 import streamlit as st
 from pathlib import Path
@@ -8,6 +8,7 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 from frontend.dashboard.pages.home import render_home_page
+from frontend.dashboard.pages.quality_report import render_quality_report_page
 
 
 def main():
@@ -47,7 +48,7 @@ def main():
     
     # Sidebar
     with st.sidebar:
-        st.image("https://via.placeholder.com/200x80/1f77b4/ffffff?text=Neural+Watch", width="stretch")
+        st.image("https://via.placeholder.com/200x80/1f77b4/ffffff?text=Neural+Watch", use_container_width=True)
         st.markdown("---")
         
         # Navigation
@@ -62,7 +63,7 @@ def main():
         
         # Phase indicator
         st.markdown("### 🔧 Current Phase")
-        st.info("**Phase 1**: Data Ingestion & Quality Setup")
+        st.info("**Phase 2**: Data Quality Checks")
         
         st.markdown("---")
         
@@ -84,16 +85,7 @@ def main():
         render_home_page()
     
     elif page == "📊 Quality Reports":
-        st.title("📊 Data Quality Reports")
-        st.info("🚧 Coming in Phase 2: Comprehensive data quality checks and visual reports")
-        st.markdown("""
-        **Features coming soon:**
-        - Missing value heatmaps
-        - Outlier detection visualizations
-        - Data type consistency checks
-        - Statistical summaries per column
-        - Duplicate analysis
-        """)
+        render_quality_report_page()
     
     elif page == "📈 Drift Reports":
         st.title("📈 Drift Detection Reports")

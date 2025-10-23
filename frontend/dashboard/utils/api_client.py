@@ -1,6 +1,6 @@
 """
 API Client for Neural Watch Frontend
-Phase 1: Data Ingestion & Quality Setup
+Phase 1 & 2: Data Ingestion & Quality Checks
 Handles communication with backend APIs
 """
 import requests
@@ -223,9 +223,166 @@ class APIClient:
             
         except Exception as e:
             return False, {"detail": f"Error getting baseline: {str(e)}"}
+    
+    def check_quality(
+        self,
+        file_id: Optional[str] = None,
+        file_path: Optional[Path] = None,
+        check_missing: bool = True,
+        check_duplicates: bool = True,
+        check_outliers: bool = True,
+        outlier_method: str = 'iqr'
+    ) -> Tuple[bool, Dict]:
+        """
+        Run quality check on a dataset
+        
+        Args:
+            file_id: File identifier (for existing upload)
+            file_path: Path to new file
+            check_missing: Check missing values
+            check_duplicates: Check duplicates
+            check_outliers: Check outliers
+            outlier_method: Outlier detection method
+            
+        Returns:
+            Tuple of (success, response_data)
+        """
+        try:
+            data = {
+                'check_missing': str(check_missing).lower(),
+                'check_duplicates': str(check_duplicates).lower(),
+                'check_outliers': str(check_outliers).lower(),
+                'outlier_method': outlier_method
+            }
+            
+            if file_id:
+                data['file_id'] = file_id
+                files = None
+            elif file_path:
+                with open(file_path, 'rb') as f:
+                    files = {'file': (file_path.name, f)}
+                    response = requests.post(
+                        f"{self.base_url}/api/v1/check_quality",
+                        files=files,
+                        data=data,
+                        timeout=self.timeout
+                    )
+                return self._handle_response(response)
+            else:
+                return False, {"detail": "Either file_id or file_path must be provided"}
+            
+            response = requests.post(
+                f"{self.base_url}/api/v1/check_quality",
+                data=data,
+                timeout=self.timeout
+            )
+            
+            return self._handle_response(response)
+            
+        except Exception as e:
+            return False, {"detail": f"Quality check error: {str(e)}"}
+    
+    def check_quality_from_streamlit(
+        self,
+        uploaded_file,
+        check_missing: bool = True,
+        check_duplicates: bool = True,
+        check_outliers: bool = True,
+        outlier_method: str = 'iqr'
+    ) -> Tuple[bool, Dict]:
+        """
+        Run quality check on Streamlit uploaded file
+        
+        Args:
+            uploaded_file: Streamlit UploadedFile object
+            check_missing: Check missing values
+            check_duplicates: Check duplicates
+            check_outliers: Check outliers
+            outlier_method: Outlier detection method
+            
+        Returns:
+            Tuple of (success, response_data)
+        """
+        try:
+            files = {'file': (uploaded_file.name, uploaded_file.getvalue())}
+            data = {
+                'check_missing': str(check_missing).lower(),
+                'check_duplicates': str(check_duplicates).lower(),
+                'check_outliers': str(check_outliers).lower(),
+                'outlier_method': outlier_method
+            }
+            
+            response = requests.post(
+                f"{self.base_url}/api/v1/check_quality",
+                files=files,
+                data=data,
+                timeout=self.timeout
+            )
+            
+            return self._handle_response(response)
+            
+        except Exception as e:
+            return False, {"detail": f"Quality check error: {str(e)}"}
+    
+    def get_quality_report(self, report_id: str) -> Tuple[bool, Dict]:
+        """
+        Get quality report by ID
+        
+        Args:
+            report_id: Report identifier
+            
+        Returns:
+            Tuple of (success, report_data)
+        """
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/v1/quality_report/{report_id}",
+                timeout=30
+            )
+            return self._handle_response(response)
+            
+        except Exception as e:
+            return False, {"detail": f"Error getting report: {str(e)}"}
+    
+    def get_quality_summary(self, file_id: str) -> Tuple[bool, Dict]:
+        """
+        Get quick quality summary for a file
+        
+        Args:
+            file_id: File identifier
+            
+        Returns:
+            Tuple of (success, summary_data)
+        """
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/v1/quality_summary/{file_id}",
+                timeout=30
+            )
+            return self._handle_response(response)
+            
+        except Exception as e:
+            return False, {"detail": f"Error getting summary: {str(e)}"}
+    
+    def list_quality_reports(self) -> Tuple[bool, Dict]:
+        """
+        List all quality reports
+        
+        Returns:
+            Tuple of (success, reports_list)
+        """
+        try:
+            response = requests.get(
+                f"{self.base_url}/api/v1/list_quality_reports",
+                timeout=30
+            )
+            return self._handle_response(response)
+            
+        except Exception as e:
+            return False, {"detail": f"Error listing reports: {str(e)}"}
 
 
-# Singleton instance
+# Convenience function
 _api_client = None
 
 def get_api_client() -> APIClient:

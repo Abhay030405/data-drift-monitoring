@@ -13,7 +13,7 @@ from config.settings import (
     API_TITLE, API_DESCRIPTION, API_VERSION, API_DOCS_URL, 
     API_REDOC_URL, CORS_ORIGINS, BACKEND_PORT, DEBUG_MODE
 )
-from backend.app.api.routes import data_upload
+from backend.app.api.routes import data_upload, quality_check
 from backend.app.utils.logger import NeuralWatchLogger
 
 # Initialize logger
@@ -39,13 +39,14 @@ app.add_middleware(
 
 # Include routers
 app.include_router(data_upload.router)
+app.include_router(quality_check.router)
 
 # Startup event
 @app.on_event("startup")
 async def startup_event():
     """Application startup event"""
     logger.info("="*60)
-    logger.info(f"{API_TITLE} v{API_VERSION} - Starting Up")  # Removed emoji
+    logger.info(f"🚀 {API_TITLE} v{API_VERSION} - Starting Up")
     logger.info("="*60)
     logger.info(f"Environment: {'Development' if DEBUG_MODE else 'Production'}")
     logger.info(f"API Docs: http://localhost:{BACKEND_PORT}{API_DOCS_URL}")
@@ -57,9 +58,9 @@ async def startup_event():
 async def shutdown_event():
     """Application shutdown event"""
     logger.info("="*60)
-    logger.info(f"{API_TITLE} - Shutting Down")  # Removed emoji
+    logger.info(f"🛑 {API_TITLE} - Shutting Down")
     logger.info("="*60)
-    
+
 # Health check endpoint
 @app.get("/health", tags=["health"])
 async def health_check():
@@ -97,7 +98,11 @@ async def root():
             "file_metadata": "/api/v1/get_file_metadata/{file_id}",
             "delete_upload": "/api/v1/delete_upload/{file_id}",
             "list_baselines": "/api/v1/list_baselines",
-            "get_baseline": "/api/v1/get_baseline/{version_id}"
+            "get_baseline": "/api/v1/get_baseline/{version_id}",
+            "check_quality": "/api/v1/check_quality",
+            "quality_report": "/api/v1/quality_report/{report_id}",
+            "quality_summary": "/api/v1/quality_summary/{file_id}",
+            "list_quality_reports": "/api/v1/list_quality_reports"
         }
     }, status_code=200)
 
